@@ -30,6 +30,15 @@ export JAVA_HOME=$GRAALVM_HOME
 ./gradlew clean nativeCompile
 ```
 
+
+## Test AOT fails
+
+```
+export GRAALVM_HOME=$HOME/.sdkman/candidates/java/current
+export JAVA_HOME=$GRAALVM_HOME
+./gradlew clean nativeTest
+```
+
 The AOT-generated repositories can be inspected under:
 
 ```
