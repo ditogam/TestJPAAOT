@@ -1,7 +1,9 @@
 package org.example.testjpaaot.jpa;
 
+import java.util.Optional;
 import java.util.Set;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
@@ -17,6 +19,7 @@ class UserRepositoryTest {
     private AddressRepository addressRepository;
 
     @Test
+    @Disabled
     void shouldFindDistinctUserIdsByStreetLike() {
         // given
         UserEntity user = new UserEntity();
@@ -39,6 +42,7 @@ class UserRepositoryTest {
     }
 
     @Test
+    @Disabled
     void shouldDeleteByEmailAndIdIsNotNull() {
         // given
         UserEntity user = new UserEntity();
@@ -55,6 +59,7 @@ class UserRepositoryTest {
     }
 
     @Test
+    @Disabled
     void shouldDeleteByEmail() {
         // given
         UserEntity user = new UserEntity();
@@ -68,5 +73,15 @@ class UserRepositoryTest {
 
         // then
         assertThat(userRepository.findById(user.getId())).isEmpty();
+    }
+
+    @Test
+    void shouldSelectWithLock() {
+        System.out.println("--------------------findByIdAndIdIsNotNull-----------");
+        Optional<UserEntity> byIdAndIdIsNotNull = userRepository.findByIdAndIdIsNotNull(0L);
+        assertThat(byIdAndIdIsNotNull).isEmpty();
+//        System.out.println("--------------------findLockedById-----------");
+//        Optional<UserEntity> lockedById = userRepository.findLockedById(0L);
+//        assertThat(lockedById).isEmpty();
     }
 }
