@@ -26,12 +26,4 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     Optional<UserEntity> findByIdAndIdIsNotNull(Long id);
-
-//    @Lock(LockModeType.PESSIMISTIC_WRITE)
-//    @NullMarked
-//    Optional<UserEntity> findById(Long id);
-
-//    @Lock(LockModeType.PESSIMISTIC_WRITE)
-//    @Query("select u from UserEntity u where u.id = :id")
-//    Optional<UserEntity> findLockedById(Long id);
 }
